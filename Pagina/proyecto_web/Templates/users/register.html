@@ -1,0 +1,82 @@
+{%load static %}
+
+{% include 'base.html' %}
+
+ 
+{% block styles %}
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <style>
+             #registro_background{
+                background-image: url("css/img/Registro_fondo.jpg");
+            }
+        </style>
+{% endblock styles %}
+
+{% block body %}
+<div id="registro_background">
+
+    <div id="resgistro_Titulo">
+        <h1 >Registar nuevo usuario</h1>
+    </div>
+
+    <div id="registro_caja">
+        <div style="margin-top: 10%;">
+                
+            <form method="post">{% csrf_token %}
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="medium-6 cell">
+                        <label>Username
+                            {{form.username}} 
+                        </label>
+                        </div>
+                        <div class="medium-6 cell">
+                        <label>correo
+                            {{form.email}}
+                        </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="medium-6 cell">
+                        <label>Nombres
+                            {{form.nombres}} 
+                        </label>
+                        </div>
+                        <div class="medium-6 cell">
+                        <label>apellidos
+                            {{form.apellidos}}
+                        </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="medium-6 cell">
+                        <label>genero
+                            {{form.genero}} 
+                        </label>
+                        </div>
+                        <div class="medium-6 cell">
+                        <label>imagen
+                            {{form.imagen}}
+                        </label>
+                        
+                        </div>
+                    </div>
+                </div>
+                <button  style="display: block; margin: 0 auto; margin-top: -10px; margin-right: 4%;"class="submit success button">Save</button>
+
+            </form>
+                
+                <a  style="display: block; margin: 0 auto;  margin-top: -30px;width: 100px; margin-left: 4%;"  class="alert button" href="{% url 'users_app:user-login'  %}"> regresar</a>
+        </div>
+    </div>
+    
+</div>
+{% endblock body %}
+    
+  

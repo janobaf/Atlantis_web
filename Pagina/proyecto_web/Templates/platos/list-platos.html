@@ -1,0 +1,59 @@
+{% include 'base.html' %}
+
+
+{% block body %}
+    <div>
+        {{idpedido}}
+        <form  method="GET"> 
+            <span >COD</span>
+            <div >
+            <select name="categoria" id="categoria">
+                <option value="0">Criollos</option>
+                <option value="1">Ceviches</option>
+                <option value="2">Especialidades</option>
+                <option value="3">Chicharrones</option>
+                <option value="4">Parrillas</option>
+                <option value="5">postres</option>
+                <option value="6">Gaseosas</option>
+                <option value="7">TAPERS</option>
+            </select>
+           
+            
+              <input type="submit" value="Buscar">
+            </div>
+          </form>
+    </div>
+    <div>
+
+  
+    <table>
+        <thead>
+            <th>nombre_plato</th>
+            <th>precio_plato</th>
+            <th>imagen del plato</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody>
+            {% for e in plato  %}
+      
+            <tr>
+                <td>{{e.Nombre_plato}} </td>
+                <td>{{e.precio_plato}}</td>
+                <td> <img src={{e.imagen.url}} alt=""></td>
+                <td>
+                    
+                  
+                  <form action="{% url 'pedidos_app:pedidos-add-platos' pk=e.id    %}" method="POST">{% csrf_token %}
+                    <input type="number" value="cantidad" name="cantidad" >
+                    <input type="submit" value="Buscar">
+                </form> 
+                </td>       
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+   
+ 
+       
+{% endblock body %}
