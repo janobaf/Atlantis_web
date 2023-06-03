@@ -1,0 +1,21 @@
+{% include 'base.html' %}
+
+
+{% block body %}
+
+{% for e  in mesa  %}
+    
+    {% if e.ocupado %}
+    <a href="{% url 'pedidos_app:add-pedidos' e.numero_mesa %}"> <h1 style="color: red;">{{e.numero_mesa}}</h1> </a>
+        
+    {% else %}    
+    <a href="{% url 'pedidos_app:add-pedidos' e.numero_mesa %}"> <h1 style="color: black;">{{e.numero_mesa}}</h1> </a>    
+    {% endif %}
+    
+    
+   
+
+{% endfor %}
+    
+       
+{% endblock body %}

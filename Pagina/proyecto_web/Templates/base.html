@@ -6,26 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <style>
+        
+/* Estilos para el menú desplegable */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+min-width: 160px;
+z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+    </style>
     {% block styles %}
         
     {% endblock styles %}
-        
+    
     <title>
         {% block titulo %}
         {% endblock titulo %}
     </title>
+
 </head>
 <body>
-    {% block heade %}
     
-    {% endblock heade %}
+    <header>
+       
+    
+        <div class="grid-container-100" style=" border: 3px solid yellow; width: 100%; height: 70px;background-color: white;">
+            <div class="grid-x grid-padding-x" >
+                <div class="medium-4 cell">
+                    <div class="dropdown" style=" border: 2px solid yellow;">
+                        <button>platos</button>
+                        <div class="dropdown-content">
+                        <a href="{% url 'platos_app:add-platos' %}">añadir platos</a>
+                          <a href="{% url 'platos_app:list-platos' %}">listar platos</a>
+                          <a href="#">Opción 3</a>
+                        </div>
+                        
+                      </div>
+                      <div class="dropdown" style=" border: 2px solid yellow;">
+                        <button>pedidos</button>
+                        <div class="dropdown-content">
+                        
+                          <a href="#">Opción 2</a>
+                        
+                        </div>
+                        
+                      </div>
+                      <div class="dropdown" style=" border: 2px solid yellow;">
+                        <button>usuario</button>
+                        <div class="dropdown-content">
+                          {% if user.roles_usuario in 'A' %}
+                             <a href="http://127.0.0.1:8000/admin">admin</a>
+                            
+                          {% endif %}
+                            
+                       
+                        </div>
+                        
+                      </div>
+                </div>
+                
+                <div class="medium-4 cell">
+                    <div id="nombre_caja">
+                        <h3 id="nombre_h3">  {{user}}</h3>
+                    </div>
+                </div>
+                <div class="medium-4 cell">
+                    <div id="imagen" >
+                        <img src="{{user.imagen.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+         </div>
+    </header>
+
+
     {% block body %} 
 
     {% endblock body %}
     {% block footer %}
 
     {% endblock footer %}
-        
+ 
 </body>
 </html>

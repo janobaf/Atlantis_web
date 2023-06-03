@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.views.generic import (
     View,
+    TemplateView
 )
 from django.views.generic.edit import (
     FormView
@@ -22,8 +23,11 @@ from .functions import code_generator
 
 
 
+class Indexview(TemplateView):
+    template_name = "menu.html"
+
 class UserRegisterView(FormView):
-    template_name = 'users/registrarse/index.html'
+    template_name = 'users/registrarse/register.html'
     form_class = UserRegisterForm
     success_url = '/'
 
@@ -61,7 +65,7 @@ class UserRegisterView(FormView):
 class LoginUser(FormView):
     template_name = 'users/Iniciar_Sesion/index.html'
     form_class = LoginForm
-    success_url = reverse_lazy('platos_app:list-platos')
+    success_url = reverse_lazy('users_app:inicio')
 
     def form_valid(self, form):
         user = authenticate(
@@ -72,6 +76,7 @@ class LoginUser(FormView):
         return super(LoginUser, self).form_valid(form)
 
 
+#
 class LogoutView(View):
 
     def get(self, request, *args, **kargs):

@@ -7,7 +7,7 @@ from django.views.generic.edit import (FormView)
 from .models import Platos
 from .forms import CreacionPlatosForm
 from ..usuarios.mixins import AdministradorPermisionMixin,MeseroPermisionMixin
-
+from ..pedidos.models import pedidos
 from django.db.models  import Value, IntegerField
 # Create your views here.
 class PlatosAddView(AdministradorPermisionMixin,FormView):
@@ -39,15 +39,17 @@ class ListarPlatosView(MeseroPermisionMixin,ListView):
     context_object_name= 'plato'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-    
-        context['idpedido'] = self.kwargs['idpedido']
-
-        
+       
+        if self.kwargs:
+            id_pedido=self.kwargs['idpedido']
+            context['idpedido'] = id_pedido
+            pedido=pedidos.objects.get(id=id_pedido)
+            print(pedido.plato)
+            context['pedidos']= pedido
         return context    
 
 
     def get_queryset(self):
-        print(self.kwargs['idpedido'])
         categoria=self.request.GET.get('categoria','')
         
         queryset=Platos.objects.ListPlatosCategoria(categoria)

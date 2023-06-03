@@ -13,7 +13,7 @@ class Platos(models.Model):
                       ('6','Gaseosas'),
                       ('7','TAPERS')
                       )
-    id = models.IntegerField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     Nombre_plato = models.CharField('Nombre_Plato', max_length=150,blank=False)
     precio_plato = models.FloatField('precio_plato',blank=False)
     categoria = models.CharField('Categoria', max_length=1,choices=categoria_pltaos)

@@ -21,4 +21,9 @@ urlpatterns = [
         views.CodeVerificationView.as_view(),
         name='user-verification',
     ),
+    path(
+        'index',
+        views.Indexview.as_view(),
+        name='inicio'
+    )
 ]

@@ -11,7 +11,7 @@ urlpatterns = [
         name='add-pedidos',
     ),
     path(
-        'pedidos-add-platos/<pk>/',
+        'pedidos-add-platos/<pk>/<idpedido>',
         views.AgregarPedidoView.as_view(),
         name="pedidos-add-platos"
     )

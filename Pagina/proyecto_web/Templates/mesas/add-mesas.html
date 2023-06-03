@@ -15,38 +15,37 @@
     {% if form.errors %}
         
     <div class ="error-messages">
-    <h3>
-    ¡Se encontraron errores!
-    </h3>
-    <ul>
+        <h3>
+        ¡Se encontraron errores!
+        </h3>
+        <ul>
 
-            {% for field in form %}
-                    {% if field.errors %}
-                        
-    <li>
-    {{ field.label }}:
+                {% for field in form %}
+                        {% if field.errors %}
                             
-    <ul>
-                    {% for error in field.errors %}
-                                    
-    <li>
-    {{ error }}
-    </li>
+        <li>
+        {{ field.label }}:
+                                
+        <ul>
+                        {% for error in field.errors %}
+                                        
+        <li>
+        {{ error }}
+        </li>
 
-                                {% endfor %}
+                                    {% endfor %}
+                                
+        </ul>
+
                             
-    </ul>
-
-                        
-    </li>
+        </li>
 
                     {% endif %}
-                {% endfor %}
-            
-    </ul>
+                    {% endfor %}
+        </ul>
 
-        
-    </div>
+            
+        </div>
 
     {% endif %}
 </body>

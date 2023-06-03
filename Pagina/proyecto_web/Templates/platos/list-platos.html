@@ -4,6 +4,7 @@
 {% block body %}
     <div>
         {{idpedido}}
+        {{pedidos.plato}}
         <form  method="GET"> 
             <span >COD</span>
             <div >
@@ -28,25 +29,46 @@
   
     <table>
         <thead>
+            
+            {% if idpedido %}
+                <th>pedido</th>
+                
+            {% endif %}
+                
+
+
             <th>nombre_plato</th>
             <th>precio_plato</th>
             <th>imagen del plato</th>
-            <th>Acciones</th>
+            
+            {% if idpedido %}
+            <th>cantidad</th>
+                
+            {% endif %}
+                
         </thead>
         <tbody>
-            {% for e in plato  %}
-      
+            
             <tr>
+              
+                    
+
+            {% for e in plato  %}
+                <td></td>
                 <td>{{e.Nombre_plato}} </td>
                 <td>{{e.precio_plato}}</td>
                 <td> <img src={{e.imagen.url}} alt=""></td>
                 <td>
                     
                   
-                  <form action="{% url 'pedidos_app:pedidos-add-platos' pk=e.id    %}" method="POST">{% csrf_token %}
-                    <input type="number" value="cantidad" name="cantidad" >
-                    <input type="submit" value="Buscar">
-                </form> 
+                  {% if idpedido %}
+                    <form action="{% url 'pedidos_app:pedidos-add-platos' pk=e.id  idpedido=idpedido  %}" method="POST">{% csrf_token %}
+                        <input type="number" value="cantidad" name="cantidad" >
+                        <input type="submit" value="aceptar">
+                    </form> 
+                  {% endif %}
+                    
+                 
                 </td>       
             </tr>
             {% endfor %}
