@@ -35,13 +35,13 @@ class MeseroPermisionMixin(LoginRequiredMixin):
         if not request.user.is_authenticated:
             return self.handle_no_permission()
         if not check_ocupation_user(request.user.roles_usuario,User.mesero) :
-            return HttpResponseRedirect(
+            return HttpResponseRedirect( 
                 reverse( 'users_app:user-login')
             )
-        if not check_ocupation_user(request.user.roles_usuario,User.administrador) :
-            return HttpResponseRedirect(
+        elif not check_ocupation_user(request.user.roles_usuario,User.administrador):
                 reverse( 'users_app:user-login')
-            )
+
+        
         return super().dispatch(request,*args,**kwargs)
     
 class CocineroPermisionMixin(LoginRequiredMixin):

@@ -15,3 +15,8 @@ class CreacionPlatosForm(forms.ModelForm):
         if precio_plato <= 0:
             self.add_error('precio_plato','el plato no puede ser negativo')
         
+class ActualizarPlatosForm(forms.ModelForm):
+    class Meta:
+        model = Platos
+        fields = ("__all__")
+        

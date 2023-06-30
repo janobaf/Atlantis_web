@@ -4,7 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.views.generic import (
     View,
-    TemplateView
+    TemplateView,
+    DeleteView
 )
 from django.views.generic.edit import (
     FormView
@@ -18,14 +19,14 @@ from .forms import (
 )
 #
 from .models import User
-# 
+from ..pedidos.models import pedidos
 from .functions import code_generator
 
 
 
 class Indexview(TemplateView):
-    template_name = "menu.html"
-
+    template_name = "index.html"
+    
 class UserRegisterView(FormView):
     template_name = 'users/registrarse/register.html'
     form_class = UserRegisterForm
@@ -63,7 +64,7 @@ class UserRegisterView(FormView):
 
 
 class LoginUser(FormView):
-    template_name = 'users/Iniciar_Sesion/index.html'
+    template_name = 'users/login.html'
     form_class = LoginForm
     success_url = reverse_lazy('users_app:inicio')
 
@@ -108,3 +109,6 @@ class CodeVerificationView(FormView):
             is_active=True
         )
         return super(CodeVerificationView, self).form_valid(form)
+
+
+

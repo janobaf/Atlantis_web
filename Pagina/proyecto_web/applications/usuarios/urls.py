@@ -12,7 +12,7 @@ urlpatterns = [
         views.UserRegisterView.as_view(),
         name='user-register',
     ),path(
-        '', 
+        'login/', 
         views.LoginUser.as_view(),
         name='user-login',
     ),
@@ -22,8 +22,13 @@ urlpatterns = [
         name='user-verification',
     ),
     path(
-        'index',
+        '',
         views.Indexview.as_view(),
         name='inicio'
+    ),
+    path(
+        'logout/',
+        views.LogoutView.as_view(),
+        name="logout"
     )
 ]

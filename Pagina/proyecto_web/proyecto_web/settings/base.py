@@ -28,7 +28,7 @@ DJANGO_APPS=(
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-      
+    'django_mysql',
     )
 
 LOCAL_APPS = (
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.mddleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'proyecto_web.urls'
@@ -89,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL ="usuarios.User"
 
 LANGUAGE_CODE = 'en-us'

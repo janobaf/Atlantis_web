@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from ..Mesas.models import mesa
 from ..platos.models import Platos
 from .managers import (PlatoManager,PedidosManager)
@@ -14,7 +15,8 @@ class PlatoPedidos(models.Model):
     def __str__(self):
         return self.plato.Nombre_plato
 class pedidos(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey( settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     mesa = models.OneToOneField(mesa,unique=True, on_delete=models.CASCADE)
     plato = models.ManyToManyField(PlatoPedidos,blank=True,unique=False)
     precio_total = models.FloatField(blank=True,null=True,default=0)

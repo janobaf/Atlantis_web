@@ -17,5 +17,13 @@ urlpatterns = [
     path('list-platos-pedido/<idpedido>',
          views.ListarPlatosView.as_view(),
          name='list-platos-pedido'
-         )
+         ),
+    path('delete-plato/<pk>',
+         views.EliminarPlatoDeleteView.as_view(),
+         name="eliminar_plato"
+         ),
+   path('update-plato/<pk>',
+        views.ActualizarPlatosUpdateView.as_view(),
+        name="actualizar_plato"
+        )
 ]

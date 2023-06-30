@@ -26,9 +26,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     nombres = models.CharField(max_length=150,blank=False)
     apellidos = models.CharField(max_length=50,blank=False)
     genero = models.CharField(max_length=1, choices=choices_genero, blank=False)
-    roles_usuario= models.CharField(max_length=1,choices=choices_roles)
+    roles_usuario= models.CharField(max_length=1,choices=choices_roles,default='M')
     codregistro = models.CharField(max_length=6, blank=True)
-    imagen = models.ImageField( upload_to='Usuarios')
+    imagen = models.ImageField(upload_to='Usuarios')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 

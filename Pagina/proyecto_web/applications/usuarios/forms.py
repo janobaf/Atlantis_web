@@ -28,6 +28,14 @@ class UserRegisterForm(forms.ModelForm):
     class Meta:
         """Meta definition for Userform."""
 
+        # username = models.CharField(max_length=150,unique=True,blank=False)
+    #email = models.EmailField(blank=False)
+    #nombres = models.CharField(max_length=150,blank=False)
+    #apellidos = models.CharField(max_length=50,blank=False)
+    #genero = models.CharField(max_length=1, choices=choices_genero, blank=False)
+    #roles_usuario= models.CharField(max_length=1,choices=choices_roles)
+    #codregistro = models.CharField(max_length=6, blank=True)
+    #imagen = models.ImageField(upload_to='Usuarios')
         model = User
         fields = (
             'username',

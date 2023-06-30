@@ -1,159 +1,92 @@
+{%load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: #080710;
-}
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
-form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
 
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
-::placeholder{
-    color: #e5e5e5;
-}
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.social{
-  margin-top: 30px;
-  display: flex;
-}
-.social div{
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover{
-  background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
-}
+	<title>Nextro Able Bootstrap 4 Admin Template</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Phoenixcoded" />
 
-    </style>
+	<!-- Favicon icon -->
+	
+    <!-- font css -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awsome-pro/css/pro.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome.css' %}">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/customizer.css' %}">
+
 </head>
-<body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form method="post" > {% csrf_token %}
 
-        <h3>Iniciar sesion </h3>
+<!-- [ auth-signin ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content">
+		<div class="card">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+					<div class="card-body">
+						<img src="assets/images/logo-dark.svg" alt="" class="img-fluid mb-4">
+						<h4 class="mb-3 f-w-400">Iniciar sesion</h4>
+						<form method="post"> {% csrf_token %}
 
-        <label for="username">Username</label>
-        {{form.username}}
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="mail"></i></span>
+							</div>
+							<input type="text" class="form-control" placeholder="Username" name="username"  >
+							
+						</div>
+						<div class="input-group mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i data-feather="lock"></i></span>
+							</div>
+							<input type="password" class="form-control" placeholder="Password" name="password" >
+						</div>
+					
+						<button class="btn btn-block btn-primary mb-4">Signin</button>
+						<p class="mb-0 text-muted">No tienes una cuenta? <a href="{% url 'users_app:user-register' %}" class="f-w-400">Registrese</a></p>
+						</form>
+						
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signin ] end -->
 
-        <label for="password">Password</label>
-        {{form.password}}
+<!-- Required Js -->
+<script src="{% static 'assets/js/vendor-all.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/feather.min.js' %}"></script>
+    <script src="{% static 'assets/js/pcoded.min.js' %}"></script>
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/clipboard.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.min.js' %}"></script>
 
-        <button>iniciar session</button>
-        <div class="social">
-          <div class="go"><a href="{% url 'users_app:user-register' %}">registrese</a></div>
-        
-        </div>
-    </form>
+<!-- Apex Chart -->
+<script src="{% static 'assets/js/plugins/apexcharts.min.js' %}"></script>
+
+
+<!-- custom-chart js -->
+<script src="{% static 'assets/js/pages/dashboard-sale.js' %}"></script>
+
 </body>
+
 </html>
